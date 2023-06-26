@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
+
 import { APP_CONTAINER_MAX_WIDTH, colors } from '../constants';
 import CartIcon from './icons/CartIcon';
 import HamburgerIcon from './icons/HamburgerIcon';
@@ -57,10 +59,14 @@ const Header = ({ title }) => {
               style={{ marginRight: "18px" }}>
               <HamburgerIcon width={screenWidth > 500 ? '45px' : '40px'} fill={primaryBlue} />
             </IconContainer>}
-          <AppTitle>{title}</AppTitle>
+          <NavLink to='/'>
+            <AppTitle>{title}</AppTitle>
+          </NavLink>
         </AppTitleContainer>
         <IconContainer onMouseOver={() => setHoveredOverCart(true)} onMouseOut={() => setHoveredOverCart(false)}>
-          <CartIcon width={screenWidth > 500 ? '35px' : '30px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
+          <NavLink to='/cart'>
+            <CartIcon width={screenWidth > 500 ? '35px' : '30px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
+          </NavLink>
         </IconContainer>
       </HeaderContainer>
     </HeaderWrapper>
