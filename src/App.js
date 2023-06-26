@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { styled } from "styled-components";
 
-function App() {
+const AppWrapper = styled.div`
+  height: 100vh;
+  padding: 1.25em;
+
+  //Styles for tablet device
+  @media screen and (min-device-width: 768px) and (max-device-width: 1024px) { 
+   padding: 1.5em;
+  }
+
+  //Styles for laptops screens and above
+  @media screen and (min-device-width: 1025px) { 
+   padding: 2em;
+  }
+`;
+
+const AppContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <AppContainer>
+        Billify App
+      </AppContainer>
+    </AppWrapper>
   );
 }
 
