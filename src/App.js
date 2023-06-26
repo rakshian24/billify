@@ -1,7 +1,12 @@
 import { styled } from "styled-components";
+import { Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header";
 import { APP_CONTAINER_MAX_WIDTH } from "./constants";
-import Categories from "./components/Categories";
+import CategoriesPage from "./pages/CategoriesPage";
+import CategoryDetailsPage from "./pages/CategoryDetailsPage";
+import CartPage from "./pages/CartPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -23,7 +28,12 @@ const App = () => {
     <AppWrapper>
       <Header title={'Billify'} />
       <AppContainer>
-        <Categories />
+        <Routes>
+          <Route path="/" element={<CategoriesPage />} />
+          <Route path="/categories/:categoryId" element={<CategoryDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/*" element={<NotFoundPage />} />
+        </Routes>
       </AppContainer>
     </AppWrapper>
   );

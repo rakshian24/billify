@@ -1,23 +1,8 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import { categories } from '../fakeJsonData';
-
-const Container = styled.div`
-  padding: 1.5em 1em;
-
-  @media screen and (min-width: 501px){
-    padding: 1.5em 1.5em;
-  }
-`;
-
-const CategoryTitle = styled.div`
-  font-size: 1.35em;
-  font-weight: 500;
-
-  @media screen and (min-width: 501px){
-    font-size: 1.75em;
-  }
-`;
+import { useNavigate } from 'react-router-dom';
+import { Container, PageTitle } from '../common/StyledComponents';
 
 const CategoryBody = styled.div`
   padding: 1.5em 0.5em;
@@ -72,12 +57,13 @@ const CategoryName = styled.div`
 `;
 
 const Categories = () => {
+  const navigate = useNavigate();
   return (
     <Container>
-      <CategoryTitle>All categories</CategoryTitle>
+      <PageTitle>All categories</PageTitle>
       <CategoryBody>
         {categories && categories.length > 0 && categories.map(({ id, name }) => {
-          return (<CategoryCard key={id}>
+          return (<CategoryCard key={id} onClick={() => navigate(`/categories/${id}`)}>
             <CategoryImageContainer>
               <CategoryImage src={require(`../assets/images/cat-${id}.png`)} />
             </CategoryImageContainer>
