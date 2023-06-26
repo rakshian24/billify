@@ -6,6 +6,7 @@ import { Container, CustomImage, ImageContainer, NameDiv, PageTitle } from '../c
 import { categories } from '../fakeJsonData';
 import PageNotFound from './PageNotFound';
 import { colors } from '../constants';
+import SelectDropdown from './SelectDropdown';
 
 const { lightBlueGrey } = colors;
 
@@ -26,11 +27,27 @@ const ItemCard = styled.div`
   text-align: center;
 `;
 
-const ItemFooter = styled.div`
-  margin-top: 1em;
+const SelectDropdownContainer = styled.div`
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+const ItemInputContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+`
+
+const ItemInput = styled.input`
+  outline: none;
+  border: 1px solid #5D9C59;
+  font-size: 1em;
+  width: 60px;
+  margin-right: 2em;
+  padding: 8px;
+  border-radius: 4px;
 `;
 
 const Button = styled.button`
@@ -41,7 +58,7 @@ const Button = styled.button`
   font-weight: 700;
   border-radius: 7px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  padding: 0.25em 0.75em;
+  padding: 0.5em 0.75em;
   font-size: 1em;
   `;
 
@@ -72,10 +89,13 @@ const CategoryDetails = () => {
                 <CustomImage src={safeRequireItemImage(categoryName, id)} />
               </ImageContainer>
               <NameDiv>{name}</NameDiv>
-              <ItemFooter>
-                {/* <DropDown /> */}
+              <SelectDropdownContainer>
+                <SelectDropdown />
+              </SelectDropdownContainer>
+              <ItemInputContainer>
+                <ItemInput type='text' placeholder='Qty' />
                 <Button>ADD</Button>
-              </ItemFooter>
+              </ItemInputContainer>
             </ItemCard>
           )
         })}
