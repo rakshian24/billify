@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import Header from "./components/Header";
 import { APP_CONTAINER_MAX_WIDTH } from "./constants";
+import Categories from "./components/Categories";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -16,6 +17,7 @@ const App = () => {
     <AppWrapper>
       <Header title={'Billify'} />
       <AppContainer>
+        <Categories />
       </AppContainer>
     </AppWrapper>
   );
