@@ -1,6 +1,6 @@
 export const categories = [{
   id: 1,
-  name: 'Pooja items',
+  name: 'pooja_items',
   items: [
     {
       "id": 1,
@@ -12,12 +12,12 @@ export const categories = [{
     },
     {
       "id": 3,
-      "name": "campour"
+      "name": "camphor"
     }
   ]
 }, {
   id: 2,
-  name: 'Rice & Dals',
+  name: 'rice_and_dals',
   items: [
     {
       "id": 1,
@@ -158,7 +158,7 @@ export const categories = [{
   ]
 }, {
   id: 3,
-  name: 'Spices',
+  name: 'spices',
   items: [
     {
       "id": 1,
@@ -295,7 +295,7 @@ export const categories = [{
   ]
 }, {
   id: 4,
-  name: 'Oils & Ghee',
+  name: 'oils_and_ghee',
   items: [
     {
       "id": 1,
@@ -324,7 +324,7 @@ export const categories = [{
   ]
 }, {
   id: 5,
-  name: 'Organics',
+  name: 'organics',
   items: [
     {
       "id": 1,
@@ -365,7 +365,7 @@ export const categories = [{
   ]
 }, {
   id: 6,
-  name: 'Cleaning',
+  name: 'cleaning',
   items: [
     {
       "id": 1,
