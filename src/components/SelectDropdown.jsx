@@ -3,15 +3,12 @@ import Select from 'react-select';
 
 import { ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS } from '../constants';
 
-const SelectDropdown = () => {
-  const [selectedValue, setSelectedValue] = useState();
-
+const SelectDropdown = ({selectedValue, setSelectedValue}) => {
   return <Select
     isSearchable={false}
     options={ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS}
     onChange={(val) => setSelectedValue(val)}
     value={selectedValue}
-    defaultValue={ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS[1]}
     styles={{
       control: (baseStyles) => ({
         ...baseStyles,
