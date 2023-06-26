@@ -10,6 +10,12 @@ const AppWrapper = styled.div`
 const AppContainer = styled.div`
   max-width: ${APP_CONTAINER_MAX_WIDTH};
   margin: 0 auto;
+  height: calc(100% - 72px);
+  overflow-y: scroll;
+
+  @media screen and (min-width: 501px){
+    height: calc(100% - 78px);
+  }
 `;
 
 const App = () => {
