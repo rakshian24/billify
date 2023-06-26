@@ -18,6 +18,11 @@ const AppContainer = styled.div`
   height: calc(100% - 72px);
   overflow-y: scroll;
 
+  //To hide scroll bars
+  &::-webkit-scrollbar{
+    display: none;
+  }
+
   @media screen and (min-width: 501px){
     height: calc(100% - 78px);
   }
