@@ -7,12 +7,17 @@ export const colors = {
 export const APP_CONTAINER_MAX_WIDTH = '1200px';
 
 export const ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS = [{
-  label: 'gm/kg',
-  value: 'gm/kg',
+  label: 'gm',
+  value: 'gm',
+},
+{
+  label: 'kg',
+  value: 'kg',
 }, {
   label: 'qty',
   value: 'qty',
-},{
+},
+{
   label: '₹',
   value: '₹',
 }];
