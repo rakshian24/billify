@@ -15,6 +15,7 @@ const CategoryBody = styled.div`
 `;
 
 const CategoryCard = styled.div`
+  cursor: pointer;
   padding: 1.5em 1em;
   display: flex;
   flex-direction: column;

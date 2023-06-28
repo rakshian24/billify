@@ -9,12 +9,12 @@ export const Container = styled.div`
 `;
 
 export const PageTitle = styled.div`
-  font-size: 1.35em;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   margin-bottom: 1em;
 
   @media screen and (min-width: 501px){
-  font-size: 1.75em;
+  font-size: 24px;
   }
 `;
 
@@ -37,10 +37,10 @@ export const CustomImage = styled.img`
 export const NameDiv = styled.div`
   margin-top: 1em;
   text-align: center;
-  font-size: 1.1em;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
 
   @media screen and (min-width: 501px){
-    font-size: 1.55em;
+    font-size: 22px;
   }
 `;

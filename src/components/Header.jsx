@@ -23,13 +23,13 @@ const HeaderWrapper = styled.div`
 const HeaderContainer = styled.div`
   max-width: ${APP_CONTAINER_MAX_WIDTH};
   margin: 0 auto;
-  padding: 9px 16px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   @media screen and (min-width: 501px){
-    padding: 10px 20px;
+    padding: 5px 20px;
   }
 `;
 const AppTitleContainer = styled.div`
@@ -103,19 +103,28 @@ const Header = ({ handleChangeLanguage }) => {
             {screenWidth < 1024 &&
               <IconContainer
                 style={{ marginRight: "18px" }}>
-                <HamburgerIcon width={screenWidth > 500 ? '45px' : '40px'} fill={primaryBlue} />
+                <HamburgerIcon
+                  width={screenWidth > 500 ? '45px' : '40px'}
+                  fill={primaryBlue} />
               </IconContainer>}
-            <NavLink to='/'>
+            <NavLink
+              to='/'
+              style={{ textDecoration: 'none' }}>
               <AppTitle>
                 <FormattedMessage id='app_title' />
               </AppTitle>
             </NavLink>
           </AppTitleContainer>
           <IconContainer>
-            <NavLink to='/cart' onMouseOver={() => setHoveredOverCart(true)} onMouseOut={() => setHoveredOverCart(false)}>
+            <NavLink
+              to='/cart'
+              onMouseOver={() => setHoveredOverCart(true)}
+              onMouseOut={() => setHoveredOverCart(false)}
+              style={{ textDecoration: 'none' }}
+            >
               <CartIcon width={screenWidth > 500 ? '35px' : '30px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
             </NavLink>
-            <div style={{ marginLeft: '10px' }} onClick={() => setOpenDrawer(true)}>
+            <div style={{ marginLeft: '16px' }} onClick={() => setOpenDrawer(true)}>
               <TranslatorIcon width={screenWidth > 500 ? '35px' : '30px'} fill={primaryBlue} />
             </div>
           </IconContainer>
