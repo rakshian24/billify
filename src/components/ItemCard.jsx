@@ -57,9 +57,9 @@ const ItemCard = ({ categoryName, itemId, itemName, handleAddItem }) => {
   const [selectedValue, setSelectedValue] = useState(ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS[0]);
   const [textValue, setTextValue] = useState('');
 
-  const safeRequireItemImage = (categoryName, itemId) => {
+  const safeRequireItemImage = (categoryName, itemName) => {
     try {
-      return require(`../assets/images/${categoryName}/item-${itemId}.png`);
+      return require(`../assets/images/${categoryName}/${itemName}.png`);
     } catch (err) {
       return require(`../assets/images/placeholder-image.png`);
     }
@@ -72,7 +72,7 @@ const ItemCard = ({ categoryName, itemId, itemName, handleAddItem }) => {
   return (
     <StyledItemCard>
       <ImageContainer>
-        <CustomImage src={safeRequireItemImage(categoryName, itemId)} />
+        <CustomImage src={safeRequireItemImage(categoryName, itemName)} />
       </ImageContainer>
       <NameDiv>
         <FormattedMessage id={itemName} />
@@ -83,7 +83,7 @@ const ItemCard = ({ categoryName, itemId, itemName, handleAddItem }) => {
       <ItemInputContainer>
         <ItemInput type='number' placeholder={selectedValue.value} onChange={handleInputTextChange} />
         <Button onClick={() => handleAddItem({ itemName, selectedValue: selectedValue.value, textValue })} disabled={!textValue}>
-          <FormattedMessage id='add'/>
+          <FormattedMessage id='add' />
         </Button>
       </ItemInputContainer>
     </StyledItemCard>
