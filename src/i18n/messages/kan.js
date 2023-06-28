@@ -110,7 +110,7 @@ export const kan = {
     indica_easy_black_hair_color: 'ಇಂಡಿಕಾ ಈಜಿ ಬ್ಲಾಕ್ ಹೇರ್ ಕಲರ್',
     comfort: 'ಕಂಫರ್ಟ್',
     soft_touch: 'ಸಾಫ್ಟ್ ಟಚ್',
-    harpic_floor_cleaner: 'ಹಾರ್ಪಿಕ್ ಫ್ಲೋರ್ ಕ್ಲೀನರ್',
+    harpic_toilet_cleaner: 'ಹಾರ್ಪಿಕ್ ಟಾಯ್ಲೆಟ್ ಕ್ಲೀನರ್',
     harpic_bathroom_cleaner: 'ಹಾರ್ಪಿಕ್ ಬಾತ್‌ರೂಮ್ ಕ್ಲೀನರ್',
     colin: 'ಕೊಲಿನ್',
     bathing_brush: 'ಬಾಥಿಂಗ್ ಬ್ರಷ್ ',

@@ -409,7 +409,7 @@ export const categories = [{
     },
     {
       "id": 11,
-      "name": "harpic_floor_cleaner"
+      "name": "harpic_toilet_cleaner"
     },
     {
       "id": 12,
