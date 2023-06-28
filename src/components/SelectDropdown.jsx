@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'react-select';
 
 import { ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS } from '../constants';

@@ -6,6 +6,8 @@ import { APP_CONTAINER_MAX_WIDTH, colors } from '../constants';
 import CartIcon from './icons/CartIcon';
 import HamburgerIcon from './icons/HamburgerIcon';
 import { useWindowSize } from '../hooks/useWindowResize';
+import { FormattedMessage } from 'react-intl';
+import TranslatorIcon from './icons/TranslatorIcon';
 
 const { lightBlueGrey, primaryBlue, primaryBlueLight } = colors;
 
@@ -43,10 +45,11 @@ const AppTitle = styled.h1`
 
 const IconContainer = styled.div`
   cursor: pointer;
-  margin-top: 9px;
+  display: flex;
+  align-items: center;
 `;
 
-const Header = ({ title }) => {
+const Header = () => {
   const [hoveredOverCart, setHoveredOverCart] = useState(false);
   const [screenWidth] = useWindowSize();
 
@@ -60,13 +63,18 @@ const Header = ({ title }) => {
               <HamburgerIcon width={screenWidth > 500 ? '45px' : '40px'} fill={primaryBlue} />
             </IconContainer>}
           <NavLink to='/'>
-            <AppTitle>{title}</AppTitle>
+            <AppTitle>
+              <FormattedMessage id='app_title' />
+            </AppTitle>
           </NavLink>
         </AppTitleContainer>
-        <IconContainer onMouseOver={() => setHoveredOverCart(true)} onMouseOut={() => setHoveredOverCart(false)}>
-          <NavLink to='/cart'>
+        <IconContainer>
+          <NavLink to='/cart' onMouseOver={() => setHoveredOverCart(true)} onMouseOut={() => setHoveredOverCart(false)}>
             <CartIcon width={screenWidth > 500 ? '35px' : '30px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
           </NavLink>
+          <div style={{ marginLeft: '10px' }}>
+            <TranslatorIcon width={screenWidth > 500 ? '35px' : '30px'} fill={primaryBlue} />
+          </div>
         </IconContainer>
       </HeaderContainer>
     </HeaderWrapper>
