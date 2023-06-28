@@ -17,7 +17,7 @@ const AppWrapper = styled.div`
 const AppContainer = styled.div`
   max-width: ${APP_CONTAINER_MAX_WIDTH};
   margin: 0 auto;
-  height: calc(100% - 72px);
+  height: calc(100% - 80px);
   overflow-y: scroll;
 
   //To hide scroll bars
@@ -26,7 +26,7 @@ const AppContainer = styled.div`
   }
 
   @media screen and (min-width: 501px){
-    height: calc(100% - 78px);
+    height: calc(100% - 85px);
   }
 `;
 
