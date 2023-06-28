@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { styled } from "styled-components";
 import { Routes, Route } from "react-router-dom";
 
@@ -8,7 +9,6 @@ import CategoryDetailsPage from "./pages/CategoryDetailsPage";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import I18nProvider from "./i18n/Provider";
-import { LOCALES } from "./i18n/locales";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -31,10 +31,14 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
+  const [locale, setLocale] = useState();
+  const handleChangeLanguage = (selectedLanguage) => {
+    setLocale(selectedLanguage);
+  }
   return (
-    <I18nProvider locale={LOCALES.ENGLISH}>
+    <I18nProvider locale={locale}>
       <AppWrapper>
-        <Header />
+        <Header handleChangeLanguage={handleChangeLanguage} />
         <AppContainer>
           <Routes>
             <Route path="/" element={<CategoriesPage />} />

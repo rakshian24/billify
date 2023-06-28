@@ -7,6 +7,7 @@ import { categories } from '../fakeJsonData';
 import PageNotFound from './PageNotFound';
 import { colors } from '../constants';
 import ItemCard from './ItemCard';
+import { FormattedMessage } from 'react-intl';
 
 const { lightBlueGrey } = colors;
 
@@ -42,7 +43,9 @@ const CategoryDetails = () => {
 
   return (
     <Container>
-      <PageTitle>{categoryName}</PageTitle>
+      <PageTitle>
+        <FormattedMessage id={categoryName} />
+      </PageTitle>
       <CategoryDetailsBody>
         {groceryItems && groceryItems.length > 0 && groceryItems.map(({ id, name }) => {
           return (

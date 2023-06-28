@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { categories } from '../fakeJsonData';
 import { useNavigate } from 'react-router-dom';
 import { Container, CustomImage, ImageContainer, NameDiv, PageTitle } from '../common/StyledComponents';
+import { FormattedMessage } from 'react-intl';
 
 const CategoryBody = styled.div`
   padding: 0em 0.5em;
@@ -33,7 +34,9 @@ const Categories = () => {
   const navigate = useNavigate();
   return (
     <Container>
-      <PageTitle>All categories</PageTitle>
+      <PageTitle>
+        <FormattedMessage id='all_categories' />
+      </PageTitle>
       <CategoryBody>
         {categories && categories.length > 0 && categories.map(({ id, name }) => {
           return (<CategoryCard key={id} onClick={() => navigate(`/categories/${id}`)}>
@@ -41,7 +44,7 @@ const Categories = () => {
               <CustomImage src={require(`../assets/images/cat-${id}.png`)} />
             </ImageContainer>
             <NameDiv>
-              {name}
+              <FormattedMessage id={name} />
             </NameDiv>
           </CategoryCard>)
         })}

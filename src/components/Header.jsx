@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { Drawer, List } from 'rsuite';
 
+import "./componentStyles.css"
 import { APP_CONTAINER_MAX_WIDTH, colors } from '../constants';
 import CartIcon from './icons/CartIcon';
 import HamburgerIcon from './icons/HamburgerIcon';
 import { useWindowSize } from '../hooks/useWindowResize';
 import { FormattedMessage } from 'react-intl';
 import TranslatorIcon from './icons/TranslatorIcon';
+import { LOCALES } from '../i18n/locales';
 
 const { lightBlueGrey, primaryBlue, primaryBlueLight } = colors;
 
@@ -49,35 +52,75 @@ const IconContainer = styled.div`
   align-items: center;
 `;
 
-const Header = () => {
+const StyledListItem = styled(List.Item)`
+  padding-left: 60px;
+  font-size: 1.35em;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:hover{
+    cursor: pointer;
+    font-weight: 500;
+    background-color: ${lightBlueGrey};
+  }
+`;
+
+const Header = ({ handleChangeLanguage }) => {
   const [hoveredOverCart, setHoveredOverCart] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
   const [screenWidth] = useWindowSize();
 
+  const handleOnLanguageClick = (selectedLocale) => {
+    setOpenDrawer(false);
+    handleChangeLanguage(selectedLocale)
+  }
+
   return (
-    <HeaderWrapper>
-      <HeaderContainer>
-        <AppTitleContainer>
-          {screenWidth < 1024 &&
-            <IconContainer
-              style={{ marginRight: "18px" }}>
-              <HamburgerIcon width={screenWidth > 500 ? '45px' : '40px'} fill={primaryBlue} />
-            </IconContainer>}
-          <NavLink to='/'>
-            <AppTitle>
-              <FormattedMessage id='app_title' />
-            </AppTitle>
-          </NavLink>
-        </AppTitleContainer>
-        <IconContainer>
-          <NavLink to='/cart' onMouseOver={() => setHoveredOverCart(true)} onMouseOut={() => setHoveredOverCart(false)}>
-            <CartIcon width={screenWidth > 500 ? '35px' : '30px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
-          </NavLink>
-          <div style={{ marginLeft: '10px' }}>
-            <TranslatorIcon width={screenWidth > 500 ? '35px' : '30px'} fill={primaryBlue} />
-          </div>
-        </IconContainer>
-      </HeaderContainer>
-    </HeaderWrapper>
+    <>
+      <Drawer
+        placement={'right'}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        size="xs"
+      >
+        <Drawer.Header>
+          <Drawer.Title style={{ fontSize: '1.5em' }}>Choose Language</Drawer.Title>
+        </Drawer.Header>
+        <Drawer.Body>
+          <List>
+            <StyledListItem onClick={() => handleOnLanguageClick(LOCALES.ENGLISH)}><FormattedMessage id="english" /></StyledListItem>
+            <StyledListItem onClick={() => handleOnLanguageClick(LOCALES.KANNADA)}><FormattedMessage id="kannada" /></StyledListItem>
+          </List>
+        </Drawer.Body>
+      </Drawer>
+      <HeaderWrapper>
+        <HeaderContainer>
+          <AppTitleContainer>
+            {screenWidth < 1024 &&
+              <IconContainer
+                style={{ marginRight: "18px" }}>
+                <HamburgerIcon width={screenWidth > 500 ? '45px' : '40px'} fill={primaryBlue} />
+              </IconContainer>}
+            <NavLink to='/'>
+              <AppTitle>
+                <FormattedMessage id='app_title' />
+              </AppTitle>
+            </NavLink>
+          </AppTitleContainer>
+          <IconContainer>
+            <NavLink to='/cart' onMouseOver={() => setHoveredOverCart(true)} onMouseOut={() => setHoveredOverCart(false)}>
+              <CartIcon width={screenWidth > 500 ? '35px' : '30px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
+            </NavLink>
+            <div style={{ marginLeft: '10px' }} onClick={() => setOpenDrawer(true)}>
+              <TranslatorIcon width={screenWidth > 500 ? '35px' : '30px'} fill={primaryBlue} />
+            </div>
+          </IconContainer>
+        </HeaderContainer>
+      </HeaderWrapper> </>
   )
 }
 export default Header
