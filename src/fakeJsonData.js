@@ -210,7 +210,7 @@ export const categories = [{
     },
     {
       "id": 13,
-      "name": "3_roses_tea_powder"
+      "name": "three_roses_tea_powder"
     },
     {
       "id": 14,
