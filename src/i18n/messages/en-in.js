@@ -87,7 +87,7 @@ export const en = {
     turmeric_powder: 'Turmeric Powder',
     sunpure_oil: 'Sunpure Oil',
     grb_ghee: 'Grb Ghee',
-    deepam_oil: 'Deepam Oil',
+    deepam_oil: 'Murugan deepam Oil',
     olive_extra_virgin_cooking_oil: 'Olive Extra Virgin Cooking Oil',
     castor_oil: 'Castor Oil',
     parachute_coconut_oil: 'Parachute Coconut Oil',
