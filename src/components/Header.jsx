@@ -69,6 +69,17 @@ const StyledListItem = styled(List.Item)`
   }
 `;
 
+const TranslatorIconContainer = styled.div`
+  margin-left: 25px;
+  @media screen and (min-width: 501px){
+    margin-left: 35px;
+  }
+
+  @media screen and (min-width: 1024px){
+    margin-left: 50px;
+  }
+`;
+
 const Header = ({ handleChangeLanguage }) => {
   const [hoveredOverCart, setHoveredOverCart] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -122,11 +133,11 @@ const Header = ({ handleChangeLanguage }) => {
               onMouseOut={() => setHoveredOverCart(false)}
               style={{ textDecoration: 'none' }}
             >
-              <CartIcon width={screenWidth > 500 ? '35px' : '30px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
+              <CartIcon width={screenWidth > 500 ? '40px' : '35px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
             </NavLink>
-            <div style={{ marginLeft: '16px' }} onClick={() => setOpenDrawer(true)}>
-              <TranslatorIcon width={screenWidth > 500 ? '35px' : '30px'} fill={primaryBlue} />
-            </div>
+            <TranslatorIconContainer onClick={() => setOpenDrawer(true)}>
+              <TranslatorIcon width={screenWidth > 500 ? '45px' : '40px'} fill={primaryBlue} />
+            </TranslatorIconContainer>
           </IconContainer>
         </HeaderContainer>
       </HeaderWrapper> </>
