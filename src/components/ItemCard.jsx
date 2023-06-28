@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import { ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS, colors } from '../constants';
 import SelectDropdown from './SelectDropdown';
 import { CustomImage, ImageContainer, NameDiv } from '../common/StyledComponents';
+import { FormattedMessage } from 'react-intl';
 
 const { lightBlueGrey } = colors;
 
@@ -73,13 +74,17 @@ const ItemCard = ({ categoryName, itemId, itemName, handleAddItem }) => {
       <ImageContainer>
         <CustomImage src={safeRequireItemImage(categoryName, itemId)} />
       </ImageContainer>
-      <NameDiv>{itemName}</NameDiv>
+      <NameDiv>
+        <FormattedMessage id={itemName} />
+      </NameDiv>
       <SelectDropdownContainer>
         <SelectDropdown selectedValue={selectedValue} setSelectedValue={(val) => setSelectedValue(val)} />
       </SelectDropdownContainer>
       <ItemInputContainer>
         <ItemInput type='number' placeholder={selectedValue.value} onChange={handleInputTextChange} />
-        <Button onClick={() => handleAddItem({ itemName, selectedValue: selectedValue.value, textValue })} disabled={!textValue}>ADD</Button>
+        <Button onClick={() => handleAddItem({ itemName, selectedValue: selectedValue.value, textValue })} disabled={!textValue}>
+          <FormattedMessage id='add'/>
+        </Button>
       </ItemInputContainer>
     </StyledItemCard>
   )
