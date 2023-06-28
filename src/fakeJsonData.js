@@ -53,7 +53,7 @@ export const categories = [{
     },
     {
       "id": 9,
-      "name": "urud_dhal"
+      "name": "urad_dal"
     },
     {
       "id": 10,
@@ -85,7 +85,7 @@ export const categories = [{
     },
     {
       "id": 17,
-      "name": "dry_hyacinth_bean"
+      "name": "field_bean"
     },
     {
       "id": 18,
@@ -109,11 +109,11 @@ export const categories = [{
     },
     {
       "id": 23,
-      "name": "cassava"
+      "name": "sabudana"
     },
     {
       "id": 24,
-      "name": "gatti_poha"
+      "name": "thick_poha"
     },
     {
       "id": 25,
@@ -145,7 +145,7 @@ export const categories = [{
     },
     {
       "id": 32,
-      "name": "almond"
+      "name": "almonds"
     },
     {
       "id": 33,
@@ -210,7 +210,7 @@ export const categories = [{
     },
     {
       "id": 13,
-      "name": "3_roses_tea_powder"
+      "name": "three_roses_tea_powder"
     },
     {
       "id": 14,
@@ -409,7 +409,7 @@ export const categories = [{
     },
     {
       "id": 11,
-      "name": "harpic_floor_cleaner"
+      "name": "harpic_toilet_cleaner"
     },
     {
       "id": 12,
