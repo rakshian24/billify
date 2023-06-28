@@ -7,6 +7,8 @@ import CategoriesPage from "./pages/CategoriesPage";
 import CategoryDetailsPage from "./pages/CategoryDetailsPage";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import I18nProvider from "./i18n/Provider";
+import { LOCALES } from "./i18n/locales";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -30,17 +32,19 @@ const AppContainer = styled.div`
 
 const App = () => {
   return (
-    <AppWrapper>
-      <Header title={'Billify'} />
-      <AppContainer>
-        <Routes>
-          <Route path="/" element={<CategoriesPage />} />
-          <Route path="/categories/:categoryId" element={<CategoryDetailsPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/*" element={<NotFoundPage />} />
-        </Routes>
-      </AppContainer>
-    </AppWrapper>
+    <I18nProvider locale={LOCALES.ENGLISH}>
+      <AppWrapper>
+        <Header />
+        <AppContainer>
+          <Routes>
+            <Route path="/" element={<CategoriesPage />} />
+            <Route path="/categories/:categoryId" element={<CategoryDetailsPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/*" element={<NotFoundPage />} />
+          </Routes>
+        </AppContainer>
+      </AppWrapper>
+    </I18nProvider>
   );
 }
 
