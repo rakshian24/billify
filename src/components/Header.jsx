@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Drawer, List } from 'rsuite';
 import { useSelector } from 'react-redux';
@@ -7,12 +7,12 @@ import { useSelector } from 'react-redux';
 import "./componentStyles.css"
 import { APP_CONTAINER_MAX_WIDTH, colors } from '../constants';
 import CartIcon from './icons/CartIcon';
-import HamburgerIcon from './icons/HamburgerIcon';
 import { useWindowSize } from '../hooks/useWindowResize';
 import { FormattedMessage } from 'react-intl';
 import TranslatorIcon from './icons/TranslatorIcon';
 import { LOCALES } from '../i18n/locales';
 import { getCartItems } from '../reducers';
+import BackIcon from './icons/BackIcon';
 
 const { lightBlueGrey, primaryBlue, primaryBlueLight } = colors;
 
@@ -40,7 +40,7 @@ const AppTitleContainer = styled.div`
 `;
 
 const AppTitle = styled.h1`
-  font-size: 1.5em;
+  font-size: 1.75em;
   color: ${primaryBlue};
 
   @media screen and (min-width: 501px){
@@ -87,6 +87,8 @@ const Header = ({ handleChangeLanguage }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [screenWidth] = useWindowSize();
   const cartItems = useSelector(getCartItems);
+  const navigate = useNavigate();
+  const { pathname = '' } = useLocation();
 
   const handleOnLanguageClick = (selectedLocale) => {
     setOpenDrawer(false);
@@ -114,12 +116,11 @@ const Header = ({ handleChangeLanguage }) => {
       <HeaderWrapper>
         <HeaderContainer>
           <AppTitleContainer>
-            {screenWidth < 1024 &&
+            {pathname !== '/' &&
               <IconContainer
-                style={{ marginRight: "18px" }}>
-                <HamburgerIcon
-                  width={screenWidth > 500 ? '45px' : '40px'}
-                  fill={primaryBlue} />
+                onClick={() => navigate(-1)}
+                style={{ marginRight: "20px" }}>
+                <BackIcon />
               </IconContainer>}
             <NavLink
               to='/'

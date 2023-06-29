@@ -20,7 +20,7 @@ const AppWrapper = styled.div`
 const AppContainer = styled.div`
   max-width: ${APP_CONTAINER_MAX_WIDTH};
   margin: 0 auto;
-  height: calc(100% - 90px);
+  height: calc(100% - 68px);
   overflow-y: scroll;
 
   //To hide scroll bars
