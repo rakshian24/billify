@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
-import { ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS, colors } from '../constants';
+import { BUTTON_TYPE, ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS, colors } from '../constants';
 import SelectDropdown from './SelectDropdown';
-import { CustomImage, ImageContainer, NameDiv } from '../common/StyledComponents';
+import { CustomImage, ImageContainer, NameDiv, Button, ItemInput } from '../common/StyledComponents';
 import { FormattedMessage } from 'react-intl';
+import { ADD_ITEM, REMOVE_ITEM } from '../reducers/actions';
 
-const { lightBlueGrey } = colors;
+const { ADD, REMOVE } = BUTTON_TYPE;
 
 const StyledItemCard = styled.div`
-  background-color: #ffffff;
+  background-color: ${colors.white};
   padding: 1em;
   text-align: center;
 `;
@@ -26,36 +27,10 @@ const ItemInputContainer = styled.div`
   justify-content: center;
 `
 
-const ItemInput = styled.input`
-  outline: none;
-  border: 1px solid #5D9C59;
-  font-size: 1em;
-  width: 61px;
-  margin-right: 2em;
-  padding: 8px;
-  border-radius: 4px;
-`;
-
-const Button = styled.button`
-  outline: non;
-  border: 1px solid ${lightBlueGrey};
-  background: #ffffff;
-  color: #5D9C59;
-  font-weight: 700;
-  border-radius: 7px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  padding: 0.5em 0.75em;
-  font-size: 1em;
-
-  &:disabled{
-    background-color: #eee;
-    opacity: 0.6;
-  }
-  `;
-
-const ItemCard = ({ categoryName, itemId, itemName, handleAddItem }) => {
+const ItemCard = ({ categoryName, itemName, handleAddRemoveItem }) => {
   const [selectedValue, setSelectedValue] = useState(ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS[0]);
   const [textValue, setTextValue] = useState('');
+  const [isAddButtonClicked, setIsAddButtonClicked] = useState(true)
 
   const safeRequireItemImage = (categoryName, itemName) => {
     try {
@@ -81,9 +56,22 @@ const ItemCard = ({ categoryName, itemId, itemName, handleAddItem }) => {
         <SelectDropdown selectedValue={selectedValue} setSelectedValue={(val) => setSelectedValue(val)} />
       </SelectDropdownContainer>
       <ItemInputContainer>
-        <ItemInput type='number' placeholder={selectedValue.value} onChange={handleInputTextChange} />
-        <Button onClick={() => handleAddItem({ itemName, selectedValue: selectedValue.value, textValue })} disabled={!textValue}>
-          <FormattedMessage id='add' />
+        <ItemInput
+          type='number'
+          placeholder={selectedValue.value}
+          onChange={handleInputTextChange}
+          inputpriority={isAddButtonClicked ? ADD : REMOVE}
+          disabled={!isAddButtonClicked}
+        />
+        <Button
+          buttontype={isAddButtonClicked ? ADD : REMOVE}
+          onClick={() => {
+            setIsAddButtonClicked(!isAddButtonClicked);
+            handleAddRemoveItem({ itemName, selectedValue: selectedValue.value, textValue, isAddButtonClicked })
+          }}
+          disabled={!textValue}
+        >
+          <FormattedMessage id={isAddButtonClicked ? ADD.toLowerCase() : REMOVE.toLowerCase()} />
         </Button>
       </ItemInputContainer>
     </StyledItemCard>

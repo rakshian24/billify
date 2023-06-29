@@ -7,6 +7,7 @@ export const en = {
     app_title: 'Billify',
     all_categories: 'All categories',
     add: 'ADD',
+    remove: 'REMOVE',
     cart_empty_message: 'There are no items in your cart.',
     added_items_in_cart: 'Your added items in cart',
     pooja_items: 'Pooja Items',
