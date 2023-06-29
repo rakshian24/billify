@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { FormattedMessage } from 'react-intl';
+import { useDispatch } from 'react-redux';
 
+import { addItemToCart, removeItemFromCart } from '../reducers/actionCreators';
 import { Container, PageTitle } from '../common/StyledComponents';
 import { categories } from '../fakeJsonData';
 import PageNotFound from './PageNotFound';
 import { colors } from '../constants';
 import ItemCard from './ItemCard';
-import { FormattedMessage } from 'react-intl';
 
 const { lightBlueGrey } = colors;
 
@@ -23,13 +25,7 @@ const CategoryDetailsBody = styled.div`
 `;
 
 const CategoryDetails = () => {
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    if (cartItems.length > 0) {
-      console.log("CartItem = ", cartItems)
-    }
-  }, [cartItems])
+  const dispatch = useDispatch();
   const { categoryId } = useParams();
   const [{ items: groceryItems = [], name: categoryName } = {}] = categories.filter(category => category.id === parseInt(categoryId));
 
@@ -37,8 +33,12 @@ const CategoryDetails = () => {
     return <PageNotFound />
   }
 
-  const handleAddItem = ({ itemName, selectedValue, textValue }) => {
-    setCartItems([...cartItems, { itemName, itemValue: `${textValue} ${selectedValue}` }])
+  const handleAddRemoveItem = ({ itemName, selectedValue, textValue, isAddButtonClicked }) => {
+    if (isAddButtonClicked) {
+      dispatch(addItemToCart({ itemName, itemValue: `${textValue} ${selectedValue}` }))
+    } else {
+      dispatch(removeItemFromCart({ itemName, itemValue: `${textValue} ${selectedValue}` }))
+    }
   }
 
   return (
@@ -49,7 +49,12 @@ const CategoryDetails = () => {
       <CategoryDetailsBody>
         {groceryItems && groceryItems.length > 0 && groceryItems.map(({ id, name }) => {
           return (
-            <ItemCard key={id} itemName={name} itemId={id} categoryName={categoryName} handleAddItem={handleAddItem} />
+            <ItemCard
+              key={id}
+              itemName={name}
+              categoryName={categoryName}
+              handleAddRemoveItem={handleAddRemoveItem}
+            />
           )
         })}
       </CategoryDetailsBody>

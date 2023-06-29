@@ -7,6 +7,7 @@ export const kan = {
     app_title: 'ಬಿಲ್ಲಿಫೈ',
     all_categories: 'ಎಲ್ಲಾ ವರ್ಗಗಳು',
     add: 'ಸೇರಿಸಿ',
+    remove: 'ತೆಗೆದುಹಾಕಿ',
     cart_empty_message: 'ನಿಮ್ಮ ಕಾರ್ಟ್‌ನಲ್ಲಿ ಯಾವುದೇ ವಸ್ತುಗಳಿಲ್ಲ.',
     added_items_in_cart: 'ಕಾರ್ಟ್‌ನಲ್ಲಿ ನೀವು ಸೇರಿಸಿದ ಐಟಂಗಳು',
     pooja_items: 'ಪೂಜಾ ವಸ್ತುಗಳು',

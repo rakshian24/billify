@@ -31,7 +31,7 @@ const Badge = styled.div`
   }
 `;
 
-const CartIcon = ({ width = '35px', stroke = "#323232", strokeWidth = '4', showBadge = true, quantity = '9+' }) => {
+const CartIcon = ({ width = '35px', stroke = "#323232", strokeWidth = '4', quantity }) => {
   return (
     <>
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width={width} height={width}>
@@ -59,8 +59,8 @@ const CartIcon = ({ width = '35px', stroke = "#323232", strokeWidth = '4', showB
           ></circle>
         </g>
       </svg>
-      {showBadge && <Badge>
-        {quantity}
+      {quantity > 0 && <Badge>
+        {quantity > 9 ? '9+' : quantity}
       </Badge>}
     </>
   )

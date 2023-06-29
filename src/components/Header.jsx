@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Drawer, List } from 'rsuite';
+import { useSelector } from 'react-redux';
 
 import "./componentStyles.css"
 import { APP_CONTAINER_MAX_WIDTH, colors } from '../constants';
@@ -11,6 +12,7 @@ import { useWindowSize } from '../hooks/useWindowResize';
 import { FormattedMessage } from 'react-intl';
 import TranslatorIcon from './icons/TranslatorIcon';
 import { LOCALES } from '../i18n/locales';
+import { getCartItems } from '../reducers';
 
 const { lightBlueGrey, primaryBlue, primaryBlueLight } = colors;
 
@@ -84,6 +86,7 @@ const Header = ({ handleChangeLanguage }) => {
   const [hoveredOverCart, setHoveredOverCart] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [screenWidth] = useWindowSize();
+  const cartItems = useSelector(getCartItems);
 
   const handleOnLanguageClick = (selectedLocale) => {
     setOpenDrawer(false);
@@ -133,7 +136,11 @@ const Header = ({ handleChangeLanguage }) => {
               onMouseOut={() => setHoveredOverCart(false)}
               style={{ textDecoration: 'none' }}
             >
-              <CartIcon width={screenWidth > 500 ? '40px' : '35px'} stroke={hoveredOverCart ? primaryBlue : primaryBlueLight} strokeWidth={hoveredOverCart ? "7" : "6"} />
+              <CartIcon
+                quantity={cartItems && cartItems.length || 0}
+                width={screenWidth > 500 ? '40px' : '35px'}
+                stroke={hoveredOverCart ? primaryBlue : primaryBlueLight}
+                strokeWidth={hoveredOverCart ? "7" : "6"} />
             </NavLink>
             <TranslatorIconContainer onClick={() => setOpenDrawer(true)}>
               <TranslatorIcon width={screenWidth > 500 ? '45px' : '40px'} fill={primaryBlue} />
