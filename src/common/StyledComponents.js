@@ -133,4 +133,9 @@ export const ItemInput = styled.input`
   &:disabled{
     opacity: 0.6;
   }
+
+  @media screen and (min-width: 501px){
+    width: 70px;
+    margin-right: 2em;
+  }
 `;
