@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
+import { FormattedMessage } from 'react-intl';
+
 import { BUTTON_TYPE, ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS, colors } from '../constants';
 import SelectDropdown from './SelectDropdown';
 import { CustomImage, ImageContainer, NameDiv, Button, ItemInput } from '../common/StyledComponents';
-import { FormattedMessage } from 'react-intl';
-import { ADD_ITEM, REMOVE_ITEM } from '../reducers/actions';
 
 const { ADD, REMOVE } = BUTTON_TYPE;
 
