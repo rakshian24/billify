@@ -13,7 +13,8 @@ export const colors = {
   lightOrange: '#ff6a00',
   darkOrange: '#f95700',
   white: '#ffffff',
-  primaryGreen: '#5D9C59'
+  primaryGreen: '#5D9C59',
+  darkRed: '#D61C4E'
 }
 
 export const APP_CONTAINER_MAX_WIDTH = '1200px';
