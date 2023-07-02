@@ -45,6 +45,8 @@ const App = () => {
     rootReducer,
   });
 
+  console.log("LOCALE = ", locale)
+
   return (
     <StoreProvider store={store}>
       <I18nProvider locale={locale}>

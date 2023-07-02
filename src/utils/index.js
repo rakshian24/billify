@@ -10,7 +10,7 @@ export const persistStateToLocalStorage = (state = {}) => {
 
 export const getStateFromLocalStorage = () => {
   if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
-    return {cart: []}
+    return { cart: [] }
   } else {
     return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
   }
@@ -33,4 +33,9 @@ export const getDefaultStateValue = (type, itemName, addedCartItems) => {
   } else {
     return ''
   }
+}
+
+export const getDateInDDMMMYYYYFormat = () => {
+  const d = new Date();
+  return d.getDate() + '-' + d.toString().substr(4, 3) + '-' + d.getFullYear();
 }
