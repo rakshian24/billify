@@ -154,7 +154,11 @@ export const categories = [{
     {
       "id": 34,
       "name": "marie_gold_biscuit"
-    }
+    },
+    {
+      "id": 35,
+      "name": "idli_rava"
+    },
   ]
 }, {
   id: 3,
