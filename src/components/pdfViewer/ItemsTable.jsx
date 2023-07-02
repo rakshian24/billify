@@ -3,6 +3,7 @@ import { View, StyleSheet } from '@react-pdf/renderer';
 
 import ItemsTableHeader from './ItemsTableHeader';
 import ItemsTableRow from './ItemsTableRow';
+import ItemsTableLastRow from './ItemsTableLastRow';
 
 const ItemsTable = ({ cartItems }) => {
   const styles = StyleSheet.create({
@@ -19,6 +20,7 @@ const ItemsTable = ({ cartItems }) => {
     <View style={styles.tableContainer}>
       <ItemsTableHeader />
       <ItemsTableRow cartItems={cartItems} />
+      <ItemsTableLastRow />
     </View>
   )
 }
