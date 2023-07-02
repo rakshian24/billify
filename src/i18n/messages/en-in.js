@@ -54,6 +54,7 @@ export const en = {
     almonds: 'Badami',
     raisins: 'Raisins',
     marie_gold_biscuit: 'Marie gold biscuit',
+    idli_rava: 'Idli Rave',
     black_pepper: 'Black pepper',
     cardamom: 'Cardamom',
     cinnamon: 'Cinnamon',

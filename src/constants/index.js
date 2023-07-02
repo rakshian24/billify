@@ -26,7 +26,16 @@ export const ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS = [{
 {
   label: 'kg',
   value: 'kg',
-}, {
+}, 
+{
+  label: 'ml',
+  value: 'ml',
+},
+{
+  label: 'ltr',
+  value: 'ltr',
+},
+{
   label: 'qty',
   value: 'qty',
 },

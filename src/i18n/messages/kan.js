@@ -54,6 +54,7 @@ export const kan = {
     almonds: 'ಬಾದಾಮಿ',
     raisins: 'ಒಣ ದ್ರಾಕ್ಷಿ',
     marie_gold_biscuit: 'ಮಾರಿ ಗೋಲ್ಡ್ ಬಿಸ್ಕತ್ತು',
+    idli_rava: 'ಇಡ್ಲಿ ರವೇ',
     black_pepper: 'ಕರಿ ಮೆಣಸು',
     cardamom: 'ಏಲಕ್ಕಿ',
     cinnamon: 'ಚಕ್ಕೆ',
