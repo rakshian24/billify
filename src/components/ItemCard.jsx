@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
 import { FormattedMessage } from 'react-intl';
+import { useSelector } from 'react-redux';
 
-import { BUTTON_TYPE, ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS, colors } from '../constants';
+import { BUTTON_TYPE, colors } from '../constants';
 import SelectDropdown from './SelectDropdown';
 import { CustomImage, ImageContainer, NameDiv, Button, ItemInput } from '../common/StyledComponents';
+import { getDefaultStateValue } from '../utils';
+import { getCartItems } from '../reducers';
 
 const { ADD, REMOVE } = BUTTON_TYPE;
 
@@ -28,9 +31,13 @@ const ItemInputContainer = styled.div`
 `
 
 const ItemCard = ({ categoryName, itemName, handleAddRemoveItem }) => {
-  const [selectedValue, setSelectedValue] = useState(ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS[0]);
+  const cartItems = useSelector(getCartItems);
+  const defaultTextValue = getDefaultStateValue('input', itemName, cartItems);
+  const defaultSelectValue = getDefaultStateValue('dropdown', itemName, cartItems);
+  const defaultValueForBtn = defaultTextValue ? false : true;
+  const [selectedValue, setSelectedValue] = useState(defaultSelectValue);
   const [textValue, setTextValue] = useState('');
-  const [isAddButtonClicked, setIsAddButtonClicked] = useState(true)
+  const [isAddButtonClicked, setIsAddButtonClicked] = useState(defaultValueForBtn)
 
   const safeRequireItemImage = (categoryName, itemName) => {
     try {
@@ -62,6 +69,7 @@ const ItemCard = ({ categoryName, itemName, handleAddRemoveItem }) => {
           onChange={handleInputTextChange}
           inputpriority={isAddButtonClicked ? ADD : REMOVE}
           disabled={!isAddButtonClicked}
+          defaultValue={defaultTextValue}
         />
         <Button
           buttontype={isAddButtonClicked ? ADD : REMOVE}
@@ -69,7 +77,7 @@ const ItemCard = ({ categoryName, itemName, handleAddRemoveItem }) => {
             setIsAddButtonClicked(!isAddButtonClicked);
             handleAddRemoveItem({ itemName, selectedValue: selectedValue.value, textValue, isAddButtonClicked })
           }}
-          disabled={!textValue}
+          disabled={defaultValueForBtn && !textValue}
         >
           <FormattedMessage id={isAddButtonClicked ? ADD.toLowerCase() : REMOVE.toLowerCase()} />
         </Button>
