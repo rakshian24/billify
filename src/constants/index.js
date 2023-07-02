@@ -1,5 +1,6 @@
 export const APP_NAME = 'billify';
-export const LOCAL_STORAGE_KEY = 'raksh-billify'
+export const LOCAL_STORAGE_KEY = 'raksh-billify';
+export const DOWNLOADED_BILL_NAME = 'bill';
 
 export const BUTTON_TYPE = {
   ADD: 'ADD',
