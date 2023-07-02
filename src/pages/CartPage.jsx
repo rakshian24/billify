@@ -14,7 +14,7 @@ const CartPage = () => {
   return (
     <Container>
       <Cart />
-      {screenWidth > 500 ? (
+      {screenWidth > 1200 ? (
         <ViewBill cartItems={cartItems} />
       ) : (
         <>{cartItems.length > 0 && <DownloadBill cartItems={cartItems} />}</>
