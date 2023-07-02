@@ -6,7 +6,7 @@ export const initialState = {
   cart: []
 };
 
-export function cartReducer(state = { cart: [] }, { type, payload: { itemName = '', itemValue } = {} }) {
+export function cartReducer(state = { cart: [] }, { type, payload: { itemName = '', itemValue = '' } = {} }) {
   switch (type) {
     case ADD_ITEM:
       const updatedState = {

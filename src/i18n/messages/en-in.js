@@ -10,7 +10,7 @@ export const en = {
     remove: 'REMOVE',
     cart_empty_message: 'There are no items in your cart.',
     added_items_in_cart: 'You have {quantity} items in cart.',
-    generate_bill: 'GENERATE BILL',
+    generate_bill: 'Generate bill',
     pooja_items: 'Pooja Items',
     rice_and_dals: 'Rice & Dals',
     spices: 'Spices',

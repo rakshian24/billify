@@ -37,7 +37,7 @@ const CategoryDetails = () => {
     if (isAddButtonClicked) {
       dispatch(addItemToCart({ itemName, itemValue: `${textValue} ${selectedValue}` }))
     } else {
-      dispatch(removeItemFromCart({ itemName, itemValue: `${textValue} ${selectedValue}` }))
+      dispatch(removeItemFromCart({ itemName }))
     }
   }
 

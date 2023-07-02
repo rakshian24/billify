@@ -1,14 +1,19 @@
 import React from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { List } from 'rsuite';
 import { styled } from 'styled-components';
 
-import { Button, Container, PageTitle } from '../common/StyledComponents'
+import { Button, Container, IconContainer, PageTitle } from '../common/StyledComponents'
 import { getCartItems } from '../reducers';
 import { colors } from '../constants';
+import TrashCanIcon from '../components/icons/TrashCanIcon';
+import { removeItemFromCart } from '../reducers/actionCreators';
 
 const StyledListItem = styled(List.Item)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-left: 15px;
   font-size: 1.35em;
   font-weight: 400;
@@ -27,6 +32,8 @@ const StyledListItem = styled(List.Item)`
 
 const CartPage = ({ intl: { formatMessage } }) => {
   const cartItems = useSelector(getCartItems);
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <PageTitle>
@@ -35,7 +42,12 @@ const CartPage = ({ intl: { formatMessage } }) => {
       <List>
         {cartItems.map(({ itemName, itemValue }) => {
           return (
-            <StyledListItem key={itemName}>{`${formatMessage({ id: itemName })} - ${itemValue}`}</StyledListItem>
+            <StyledListItem key={itemName}>
+              <div>{`${formatMessage({ id: itemName })} - ${itemValue}`}</div>
+              <IconContainer onClick={() => dispatch(removeItemFromCart({ itemName }))}>
+                <TrashCanIcon />
+              </IconContainer>
+            </StyledListItem>
           )
         })}
       </List>

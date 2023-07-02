@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { BUTTON_TYPE, colors } from "../constants";
 
-const {ADD, REMOVE} = BUTTON_TYPE
+const { ADD, REMOVE } = BUTTON_TYPE
 
 const { lightBlueGrey,
   primaryBlue,
@@ -56,7 +56,7 @@ export const NameDiv = styled.div`
 `;
 
 export const Button = styled.button`
-  outline: non;
+  outline: none;
   border: 1px solid ${lightBlueGrey};
   background: ${({ buttontype }) => {
     switch (buttontype) {
@@ -65,7 +65,7 @@ export const Button = styled.button`
       case ADD:
         return white;
       case REMOVE:
-        return lightOrange
+        return lightOrange;
       default:
         return primaryBlue;
     }
@@ -85,7 +85,7 @@ export const Button = styled.button`
   font-weight: 700;
   border-radius: 7px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  padding: 0.5em 0.75em;
+  padding: 7.5px 10.5px;
   font-size: 1em;
 
   &:hover{
@@ -124,7 +124,7 @@ export const ItemInput = styled.input`
         return `${border} ${primaryGreen}`;
     }
   }};
-  font-size: 1em;
+  font-size: 15px;
   width: 100%;
   margin-right: 1em;
   padding: 8px;
@@ -137,5 +137,20 @@ export const ItemInput = styled.input`
   @media screen and (min-width: 501px){
     width: 70px;
     margin-right: 2em;
+  }
+`;
+
+export const IconContainer = styled.div`
+  cursor: pointer;
+  margin-right: 18px;
+  display: grid;
+  place-items: center;
+
+
+  &:hover{
+    background-color: ${lightBlueGrey};
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
   }
 `;
