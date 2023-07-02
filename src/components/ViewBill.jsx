@@ -29,7 +29,7 @@ const ViewBill = ({ cartItems }) => {
 
       {showPdfView && cartItems.length > 0 && (
         <Container>
-          {<PDFViewer width="100%" height="600" >
+          {<PDFViewer width="100%" height="900" >
             <Bill cartItems={cartItems} />
           </PDFViewer>}
         </Container>

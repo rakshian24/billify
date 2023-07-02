@@ -9,19 +9,19 @@ const styles = StyleSheet.create({
     borderBottomColor: '#bff0fd',
     borderBottomWidth: 1,
     alignItems: 'center',
-    height: 24,
+    height: 30,
     fontStyle: 'bold',
   },
   slNo: {
-    width: '11.5%',
+    width: '10%',
     borderRightColor: borderColor,
     borderRightWidth: 1,
     textAlign: 'center',
     paddingRight: 18,
     paddingLeft: 18,
   },
-  description: {
-    width: '67%',
+  itemName: {
+    width: '58%',
     textAlign: 'left',
     borderRightColor: borderColor,
     borderRightWidth: 1,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     paddingRight: 18,
   },
   qty: {
-    width: '10.5%',
+    width: '12%',
     borderRightColor: borderColor,
     borderRightWidth: 1,
     textAlign: 'center',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     paddingRight: 8,
   },
   amount: {
-    width: '100%',
+    width: '20%',
     textAlign: 'right',
     paddingRight: 8,
   },
@@ -48,11 +48,11 @@ const ItemsTableRow = ({ cartItems }) => {
   const rows = cartItems.map(({ itemName, itemValue }, index) =>
     <View style={styles.row} key={index}>
       <Text style={styles.slNo}>{index + 1}</Text>
-      <Text style={styles.description}>
+      <Text style={styles.itemName}>
         <FormattedMessage id={itemName} />
       </Text>
       <Text style={styles.qty}>{itemValue}</Text>
-      <Text style={styles.rate}>{' '}</Text>
+      <Text style={styles.amount}></Text>
     </View>
   )
   return (<Fragment>{rows}</Fragment>)

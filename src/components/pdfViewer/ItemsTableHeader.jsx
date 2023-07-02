@@ -9,23 +9,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#bff0fd',
     borderBottomWidth: 1,
     alignItems: 'center',
-    height: 24,
+    height: 30,
     textAlign: 'center',
     fontStyle: 'bold',
     flexGrow: 1,
+    fontSize: '12.5px',
+    fontWeight: 600
   },
   slNo: {
     width: '10%',
     borderRightColor: borderColor,
     borderRightWidth: 1,
   },
-  description: {
-    width: '60%',
+  itemName: {
+    width: '58%',
     borderRightColor: borderColor,
     borderRightWidth: 1,
   },
   qty: {
-    width: '10%',
+    width: '12%',
     borderRightColor: borderColor,
     borderRightWidth: 1,
   },
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
 const ItemsTableHeader = () => (
   <View style={styles.container}>
     <Text style={styles.slNo}>Sl no</Text>
-    <Text style={styles.description}>Item Name</Text>
+    <Text style={styles.itemName}>Item Name</Text>
     <Text style={styles.qty}>Qty</Text>
     <Text style={styles.amount}>Amount</Text>
   </View>
