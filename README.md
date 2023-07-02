@@ -1,6 +1,6 @@
 # Billify App
 
-Web app for generating the bills. [Click here](https://billify-on-vercel-q4i42znd4-rakshsindhe.vercel.app/) to view the app.
+Web app for generating the bills. [Click here](https://raksh-billify.vercel.app/) to view the app.
 
 
 ## References
