@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     alignItems: 'center',
     height: 30,
-    fontStyle: 'bold',
+    fontWeight: 500
   },
   slNo: {
     width: '10%',

@@ -11,10 +11,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 30,
     textAlign: 'center',
-    fontStyle: 'bold',
+    fontWeight: 600,
     flexGrow: 1,
     fontSize: '12.5px',
-    fontWeight: 600
   },
   slNo: {
     width: '10%',

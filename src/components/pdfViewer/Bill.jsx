@@ -1,5 +1,6 @@
 import React from 'react';
-import { Page, Document, Image, StyleSheet } from '@react-pdf/renderer';
+import { Page, Document, Image, StyleSheet, Font } from '@react-pdf/renderer';
+import "../../index.css";
 
 import logo from "../../assets/logo/billify-logo.png"
 import DocumentTitle from './DocumentTitle';
@@ -7,6 +8,24 @@ import BillDate from './BillDate';
 import { getDateInDDMMMYYYYFormat } from '../../utils';
 import ItemsTable from './ItemsTable';
 import I18nProvider from "../../i18n/Provider";
+import KannadaFontRegular from "../../assets/fonts/BalooTamma2-Regular.ttf";
+import KannadaFontMedium from "../../assets/fonts/BalooTamma2-Medium.ttf";
+import KannadaSemiBold from "../../assets/fonts/BalooTamma2-SemiBold.ttf";
+
+Font.register({
+  family: 'Baloo Tamma 2',
+  fonts: [{
+    src: KannadaFontRegular,
+    fontWeight: 400
+  }, {
+    src: KannadaFontMedium,
+    fontWeight: 500
+  }, {
+    src: KannadaSemiBold,
+    fontWeight: 600
+  }],
+  format: 'truetype',
+})
 
 const styles = StyleSheet.create({
   pageTitleContainer: {
@@ -16,7 +35,7 @@ const styles = StyleSheet.create({
   },
 
   page: {
-    fontFamily: 'Helvetica',
+    fontFamily: 'Baloo Tamma 2',
     fontSize: 11,
     paddingTop: 30,
     paddingLeft: 60,
@@ -34,7 +53,7 @@ const styles = StyleSheet.create({
 
 const Bill = ({ cartItems }) => {
   return (
-    <I18nProvider locale={'en-in'}>
+    <I18nProvider locale={'kn'}>
       <Document>
         <Page size="A4" style={styles.page}>
           <div style={styles.pageTitleContainer}>
