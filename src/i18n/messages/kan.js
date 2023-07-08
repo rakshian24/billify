@@ -7,6 +7,7 @@ export const kan = {
     app_title: 'ಬಿಲ್ಲಿಫೈ',
     all_categories: 'ಎಲ್ಲಾ ವರ್ಗಗಳು',
     add_category: 'ವರ್ಗವನ್ನು ಸೇರಿಸಿ',
+    edit_category: 'ವರ್ಗವನ್ನು ತಿದ್ದಿ',
     category_name: 'ವರ್ಗದ ಹೆಸರು',
     this_is_required: 'ಇದು ಅಗತ್ಯವಿದೆ',
     category_name_too_long: 'ವರ್ಗದ ಹೆಸರು ತುಂಬಾ ಉದ್ದವಾಗಿದೆ',

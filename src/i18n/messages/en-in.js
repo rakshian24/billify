@@ -7,6 +7,7 @@ export const en = {
     app_title: 'Billify',
     all_categories: 'All categories',
     add_category: 'Add category',
+    edit_category: 'Edit category',
     category_name: 'Category name',
     this_is_required: 'This is required',
     category_name_too_long: 'Category name is too long',

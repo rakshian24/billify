@@ -4,6 +4,15 @@ export const DOWNLOADED_BILL_NAME = 'bill';
 
 export const CATEGORY_NAME_MAX_LENGTH = 19;
 
+export const MODAL_TYPES = {
+  CATEGORY: 'CATEGORY',
+  ITEM: 'ITEM',
+};
+export const MODAL_ACTION_TYPES = {
+  ADD: 'ADD',
+  EDIT: 'EDIT',
+};
+
 export const BUTTON_TYPE = {
   ADD: 'ADD',
   REMOVE: 'REMOVE'
@@ -30,7 +39,7 @@ export const ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS = [{
 {
   label: 'kg',
   value: 'kg',
-}, 
+},
 {
   label: 'ml',
   value: 'ml',

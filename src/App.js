@@ -11,6 +11,7 @@ import CategoryDetailsPage from "./pages/CategoryDetailsPage";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { setLocale } from "./reducers/actionCreators";
+import ModalConductor from "./components/ModalConductor";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -35,7 +36,7 @@ const AppContainer = styled.div`
 const App = () => {
   const dispatch = useDispatch();
   const locale = useSelector(getLocale);
-  
+
   const handleChangeLanguage = (selectedLanguage) => {
     dispatch(setLocale({ locale: selectedLanguage }))
   }
@@ -44,6 +45,7 @@ const App = () => {
     <I18nProvider locale={locale}>
       <AppWrapper>
         <Header handleChangeLanguage={handleChangeLanguage} />
+        <ModalConductor />
         <AppContainer>
           <Routes>
             <Route path="/" element={<CategoriesPage />} />

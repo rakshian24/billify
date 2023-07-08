@@ -3,11 +3,14 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { Form, Modal } from 'rsuite';
 import { useDispatch } from 'react-redux';
 
-import { Button, Input } from '../common/StyledComponents';
-import { BUTTON_TYPE, CATEGORY_NAME_MAX_LENGTH, colors } from '../constants';
-import { addCategory } from '../reducers/actionCreators';
+import { Button, Input } from '../../common/StyledComponents';
+import { BUTTON_TYPE, CATEGORY_NAME_MAX_LENGTH, MODAL_ACTION_TYPES, colors } from '../../constants';
+import { addCategory, toggleModal } from '../../reducers/actionCreators';
 
-const AddCategoryModal = ({ open, handleClose, intl: { formatMessage } }) => {
+const { ADD } = MODAL_ACTION_TYPES;
+
+const CategoryModal = ({ modalDetails, intl: { formatMessage } }) => {
+  const { action: actionType = ADD, showModal = false } = modalDetails;
   const dispatch = useDispatch();
   const [categoryName, setCategoryName] = useState('');
   const [errorText, setErrorText] = useState('');
@@ -15,7 +18,7 @@ const AddCategoryModal = ({ open, handleClose, intl: { formatMessage } }) => {
   const handleCloseModal = () => {
     setCategoryName('');
     setErrorText('');
-    handleClose();
+    dispatch(toggleModal({ showModal: false }));
   }
 
   const handleAdd = () => {
@@ -27,7 +30,7 @@ const AddCategoryModal = ({ open, handleClose, intl: { formatMessage } }) => {
     }
     dispatch(addCategory({ categoryName }));
     setCategoryName('');
-    handleClose();
+    dispatch(toggleModal({ showModal: false }));
   };
 
   const handleOnChange = (e) => {
@@ -41,10 +44,10 @@ const AddCategoryModal = ({ open, handleClose, intl: { formatMessage } }) => {
 
   return (
     <>
-      <Modal open={open} onClose={handleCloseModal} backdrop="static" style={{ marginTop: '100px' }}>
+      <Modal open={showModal} onClose={handleCloseModal} backdrop="static" style={{ marginTop: '100px' }}>
         <Modal.Header>
           <Modal.Title>
-            <FormattedMessage id='add_category' />
+            <FormattedMessage id={actionType === ADD ? 'add_category' : 'edit_category'} />
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -80,4 +83,4 @@ const AddCategoryModal = ({ open, handleClose, intl: { formatMessage } }) => {
   )
 }
 
-export default injectIntl(AddCategoryModal);
+export default injectIntl(CategoryModal);
