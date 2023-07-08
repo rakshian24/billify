@@ -2,6 +2,8 @@ export const APP_NAME = 'billify';
 export const LOCAL_STORAGE_KEY = 'raksh-billify';
 export const DOWNLOADED_BILL_NAME = 'bill';
 
+export const CATEGORY_NAME_MAX_LENGTH = 19;
+
 export const BUTTON_TYPE = {
   ADD: 'ADD',
   REMOVE: 'REMOVE'
@@ -9,6 +11,7 @@ export const BUTTON_TYPE = {
 
 export const colors = {
   primaryBlue: '#0077c5',
+  lightPrimaryBlue: '#1684CA',
   primaryBlueLight: '#0076c5cd',
   lightBlueGrey: '#0077c51a',
   lightOrange: '#ff6a00',

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
-import { categories } from '../fakeJsonData';
 import { useNavigate } from 'react-router-dom';
-import { Container, CustomImage, ImageContainer, NameDiv, PageTitle } from '../common/StyledComponents';
+import { Button, Container, CustomDiv, CustomImage, ImageContainer, NameDiv, PageTitle } from '../common/StyledComponents';
 import { FormattedMessage } from 'react-intl';
+import AddCategoryModal from './AddCategoryModal';
+import { useSelector } from 'react-redux';
+import { getCategories } from '../reducers';
 
 const CategoryBody = styled.div`
   padding: 0em 0.5em;
@@ -32,25 +34,45 @@ const CategoryCard = styled.div`
 `;
 
 const Categories = () => {
+  const [isAddCategoryBtnClicked, setIsAddCategoryBtnClicked] = useState(false);
   const navigate = useNavigate();
+  const categoryData = useSelector(getCategories);
+  console.log('categoryData = ', categoryData)
+
+  const safeRequireItemImage = (categoryId) => {
+    try {
+      return require(`../assets/images/cat-${categoryId}.png`);
+    } catch (err) {
+      return require(`../assets/images/placeholder-image.png`);
+    }
+  }
+
   return (
-    <Container>
-      <PageTitle>
-        <FormattedMessage id='all_categories' />
-      </PageTitle>
-      <CategoryBody>
-        {categories && categories.length > 0 && categories.map(({ id, name }) => {
-          return (<CategoryCard key={id} onClick={() => navigate(`/categories/${id}`)}>
-            <ImageContainer>
-              <CustomImage src={require(`../assets/images/cat-${id}.png`)} />
-            </ImageContainer>
-            <NameDiv>
-              <FormattedMessage id={name} />
-            </NameDiv>
-          </CategoryCard>)
-        })}
-      </CategoryBody>
-    </Container>
+    <>
+      <AddCategoryModal open={isAddCategoryBtnClicked} handleClose={() => setIsAddCategoryBtnClicked(false)} />
+      <Container>
+        <PageTitle>
+          <CustomDiv display='flex' alignitems='center' justifycontent='space-between' marginbottom='2'>
+            <FormattedMessage id='all_categories' />
+            <Button onClick={() => setIsAddCategoryBtnClicked(true)}>
+              <FormattedMessage id='add_category' />
+            </Button>
+          </CustomDiv>
+        </PageTitle>
+        <CategoryBody>
+          {categoryData && categoryData.length > 0 && categoryData.map(({ id, name }) => {
+            return (<CategoryCard key={id} onClick={() => navigate(`/categories/${id}`)}>
+              <ImageContainer>
+                <CustomImage src={safeRequireItemImage(id)} />
+              </ImageContainer>
+              <NameDiv>
+                <FormattedMessage id={name} />
+              </NameDiv>
+            </CategoryCard>)
+          })}
+        </CategoryBody>
+      </Container>
+    </>
   )
 }
 

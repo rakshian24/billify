@@ -1,4 +1,4 @@
-export const categories = [{
+export const categoryData = [{
   id: 1,
   name: 'pooja_items',
   items: [

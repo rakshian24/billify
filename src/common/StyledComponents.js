@@ -8,7 +8,8 @@ const { lightBlueGrey,
   white,
   primaryGreen,
   lightOrange,
-  darkOrange } = colors;
+  darkOrange,
+  lightPrimaryBlue } = colors;
 
 export const Container = styled.div`
   padding: 1.5em 1em;
@@ -23,8 +24,8 @@ export const PageTitle = styled.div`
   font-weight: 600;
   margin-bottom: 1em;
 
-  @media screen and (min-width: 501px){
-  font-size: 24px;
+  @media screen and (min-width: 501px) and (max-width: 1024px){
+    font-size: 20px;
   }
 `;
 
@@ -49,6 +50,7 @@ export const NameDiv = styled.div`
   text-align: center;
   font-size: 17px;
   font-weight: 600;
+  word-wrap: break-word;
 
   @media screen and (min-width: 501px){
     font-size: 22px;
@@ -61,13 +63,13 @@ export const Button = styled.button`
   background: ${({ buttontype }) => {
     switch (buttontype) {
       case 'primary':
-        return primaryBlue;
+        return lightPrimaryBlue;
       case ADD:
         return white;
       case REMOVE:
         return lightOrange;
       default:
-        return primaryBlue;
+        return lightPrimaryBlue;
     }
   }};
   color: ${({ buttontype }) => {
@@ -85,8 +87,8 @@ export const Button = styled.button`
   font-weight: 700;
   border-radius: 7px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  padding: 7.5px 10.5px;
-  font-size: 1em;
+  padding: 3px 11px;
+  font-size: 20px;
 
   &:hover{
     background: ${({ buttontype }) => {
@@ -108,9 +110,17 @@ export const Button = styled.button`
     opacity: 0.6;
     color: ${primaryGreen}
   }
+
+  @media screen and (min-width: 501px) and (max-width: 1024px){
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 1025px){
+    padding: 5px 10px;
+  }
 `;
 
-export const ItemInput = styled.input`
+export const Input = styled.input`
   outline: none;
   border: 1px solid ${colors.primaryGreen};
   border: ${({ inputpriority }) => {
@@ -135,7 +145,7 @@ export const ItemInput = styled.input`
   }
 
   @media screen and (min-width: 501px){
-    width: 70px;
+    width: ${({ fullwidth }) => fullwidth ? '100%' : '70px'};
     margin-right: 2em;
   }
 `;
@@ -153,4 +163,15 @@ export const IconContainer = styled.div`
     height: 45px;
     border-radius: 50%;
   }
+`;
+
+export const CustomDiv = styled.div`
+  margin-top: ${({ margintop }) => (margintop && `${margintop}rem`) || '0'};
+  margin-bottom: ${({ marginbottom }) => (marginbottom && `${marginbottom}rem`) || '0'};
+  margin-left: ${({ marginleft }) => (marginleft && `${marginleft}rem`) || '0'};
+  margin-right: ${({ marginright }) => (marginright && `${marginright}rem`) || '0'};
+  display: ${({ display }) => (display && display) || 'block'};
+  align-items: ${({ alignitems }) => (alignitems && alignitems) || 'flex-start'};
+  justify-content: ${({ justifycontent }) => (justifycontent && justifycontent) || 'flex-start'};
+  flex-direction: ${({ flexdirection }) => (flexdirection && flexdirection) || 'row'};
 `;

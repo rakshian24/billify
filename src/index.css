@@ -29,3 +29,24 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.rs-modal-title{
+  font-size: 22px;
+}
+
+.rs-modal-header-close > svg{
+  font-size: 20px;
+  top: 25px;
+}
+
+.rs-form-control-label{
+  font-size: 16px;
+}
+
+.rs-input{
+  font-size: 17px;
+}
+
+.rs-form-help-text{
+  font-size: 14.5px;
+}
