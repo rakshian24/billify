@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { addItemToCart, removeItemFromCart } from '../reducers/actionCreators';
 import { Container, PageTitle } from '../common/StyledComponents';
-import { categories } from '../fakeJsonData';
+import { categoryData } from '../catergoryData';
 import PageNotFound from './PageNotFound';
 import { colors } from '../constants';
 import ItemCard from './ItemCard';
@@ -27,7 +27,7 @@ const CategoryDetailsBody = styled.div`
 const CategoryDetails = () => {
   const dispatch = useDispatch();
   const { categoryId } = useParams();
-  const [{ items: groceryItems = [], name: categoryName } = {}] = categories.filter(category => category.id === parseInt(categoryId));
+  const [{ items: groceryItems = [], name: categoryName } = {}] = categoryData.filter(category => category.id === parseInt(categoryId));
 
   if (!categoryName) {
     return <PageNotFound />

@@ -1,3 +1,4 @@
+import { categoryData } from "../catergoryData";
 import { ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS, LOCAL_STORAGE_KEY } from "../constants"
 
 export const persistStateToLocalStorage = (state = {}) => {
@@ -10,7 +11,7 @@ export const persistStateToLocalStorage = (state = {}) => {
 
 export const getStateFromLocalStorage = () => {
   if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
-    return { cart: [] }
+    return { cart: [], categories: categoryData }
   } else {
     return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
   }

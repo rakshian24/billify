@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import { ADD_ITEM, REMOVE_ITEM } from './actions';
+import { ADD_CATEGORY, ADD_ITEM, REMOVE_ITEM } from './actions';
 import { persistStateToLocalStorage, getStateFromLocalStorage } from '../utils';
 
 export const initialState = {
-  ...getStateFromLocalStorage()
+  ...getStateFromLocalStorage(),
 };
 
 export function cartReducer(state = initialState, { type, payload: { itemName = '', itemValue = '' } = {} }) {
@@ -28,10 +28,30 @@ export function cartReducer(state = initialState, { type, payload: { itemName = 
     default:
       return state;
   }
-}
+};
+
+export function categoryReducer(state = initialState, { type, payload: { categoryName = '' } = {} }) {
+  switch (type) {
+    case ADD_CATEGORY:
+      const updatedState = {
+        ...state,
+        categories: [...state.categories, {
+          id: state.categories.length + 1,
+          name: categoryName,
+          items: []
+        }]
+      };
+      persistStateToLocalStorage(updatedState);
+      return updatedState;
+    default:
+      return state;
+  }
+};
 
 export const rootReducer = combineReducers({
-  cartReducer
+  cartReducer,
+  categoryReducer
 })
 
 export const getCartItems = (state) => state.cartReducer.cart;
+export const getCategories = (state) => state.categoryReducer.categories;

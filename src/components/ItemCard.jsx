@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { BUTTON_TYPE, colors } from '../constants';
 import SelectDropdown from './SelectDropdown';
-import { CustomImage, ImageContainer, NameDiv, Button, ItemInput } from '../common/StyledComponents';
+import { CustomImage, ImageContainer, NameDiv, Button, Input } from '../common/StyledComponents';
 import { getDefaultStateValue } from '../utils';
 import { getCartItems } from '../reducers';
 
@@ -63,7 +63,7 @@ const ItemCard = ({ categoryName, itemName, handleAddRemoveItem }) => {
         <SelectDropdown selectedValue={selectedValue} setSelectedValue={(val) => setSelectedValue(val)} />
       </SelectDropdownContainer>
       <ItemInputContainer>
-        <ItemInput
+        <Input
           type='number'
           placeholder={selectedValue.value}
           onChange={handleInputTextChange}
