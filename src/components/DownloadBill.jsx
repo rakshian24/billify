@@ -18,9 +18,7 @@ const DownloadBill = ({ cartItems, locale }) => {
     <Container>
       <PDFDownloadLink document={<Bill cartItems={cartItems} locale={locale} />} fileName={`${DOWNLOADED_BILL_NAME}.pdf`}>
         {({ loading }) => (loading ? 'Loading document...' : <ButtonContainer>
-          <Button
-            style={{ fontSize: '20px' }}
-          >
+          <Button>
             <FormattedMessage id='download_bill' />
           </Button>
         </ButtonContainer>)}

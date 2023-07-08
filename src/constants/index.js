@@ -3,6 +3,7 @@ export const LOCAL_STORAGE_KEY = 'raksh-billify';
 export const DOWNLOADED_BILL_NAME = 'bill';
 
 export const CATEGORY_NAME_MAX_LENGTH = 19;
+export const ITEM_NAME_MAX_LENGTH = 24;
 
 export const MODAL_TYPES = {
   CATEGORY: 'CATEGORY',

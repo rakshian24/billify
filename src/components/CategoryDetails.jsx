@@ -2,14 +2,14 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { addItemToCart, removeItemFromCart } from '../reducers/actionCreators';
-import { Container, PageTitle } from '../common/StyledComponents';
-import { categoryData } from '../catergoryData';
+import { addItemToCart, removeItemFromCart, toggleModal } from '../reducers/actionCreators';
+import { Button, Container, CustomDiv, PageTitle } from '../common/StyledComponents';
 import PageNotFound from './PageNotFound';
-import { colors } from '../constants';
+import { MODAL_TYPES, colors } from '../constants';
 import ItemCard from './ItemCard';
+import { getCategories } from '../reducers';
 
 const { lightBlueGrey } = colors;
 
@@ -27,6 +27,7 @@ const CategoryDetailsBody = styled.div`
 const CategoryDetails = () => {
   const dispatch = useDispatch();
   const { categoryId } = useParams();
+  const categoryData = useSelector(getCategories);
   const [{ items: groceryItems = [], name: categoryName } = {}] = categoryData.filter(category => category.id === parseInt(categoryId));
 
   if (!categoryName) {
@@ -44,7 +45,18 @@ const CategoryDetails = () => {
   return (
     <Container>
       <PageTitle>
-        <FormattedMessage id={categoryName} />
+        <CustomDiv display='flex' alignitems='center' justifycontent='space-between' marginbottom='2'>
+          <FormattedMessage id={categoryName} />
+          <Button
+            onClick={() => dispatch(toggleModal({
+              type: MODAL_TYPES.ITEM,
+              showModal: true,
+              props: { categoryId }
+            }))}
+          >
+            <FormattedMessage id='create_item' />
+          </Button>
+        </CustomDiv>
       </PageTitle>
       <CategoryDetailsBody>
         {groceryItems && groceryItems.length > 0 && groceryItems.map(({ id, name }) => {

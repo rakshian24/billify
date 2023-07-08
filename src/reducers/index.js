@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_CATEGORY, ADD_ITEM, REMOVE_ITEM, SET_LOCALE, TOGGLE_MODAL } from './actions';
+import { ADD_CATEGORY, ADD_ITEM, REMOVE_ITEM, SET_LOCALE, TOGGLE_MODAL, UDPATE_CATEGORY } from './actions';
 import { persistStateToLocalStorage, getStateFromLocalStorage } from '../utils';
 import { MODAL_ACTION_TYPES } from '../constants';
 
@@ -31,7 +31,7 @@ export function cartReducer(state = initialState, { type, payload: { itemName = 
   }
 };
 
-export function categoryReducer(state = initialState, { type, payload: { categoryName = '' } = {} }) {
+export function categoryReducer(state = initialState, { type, payload: { categoryId = 1, categoryName = '', itemName = '' } = {} }) {
   switch (type) {
     case ADD_CATEGORY:
       const updatedState = {
@@ -44,6 +44,24 @@ export function categoryReducer(state = initialState, { type, payload: { categor
       };
       persistStateToLocalStorage(updatedState);
       return updatedState;
+
+    case UDPATE_CATEGORY:
+      state.categories.forEach((category) => {
+        if (category.id === categoryId) {
+          category.items.push({
+            id: category.items.length + 1,
+            name: itemName
+          })
+        }
+      });
+
+      const updatedCategory = {
+        ...state,
+        categories: [...state.categories]
+      }
+
+      persistStateToLocalStorage(updatedCategory);
+      return updatedCategory;
     default:
       return state;
   }

@@ -18,7 +18,6 @@ const ViewBill = ({ cartItems, locale }) => {
       {cartItems.length > 0 && (
         <ButtonContainer>
           <Button
-            style={{ fontSize: '20px' }}
             onClick={() => setShowPdfView(true)}
           >
             <FormattedMessage id='view_bill' />

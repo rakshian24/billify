@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM, ADD_CATEGORY, SET_LOCALE, TOGGLE_MODAL } from "./actions";
+import { ADD_ITEM, REMOVE_ITEM, ADD_CATEGORY, SET_LOCALE, TOGGLE_MODAL, UDPATE_CATEGORY } from "./actions";
 
 export const addItemToCart = (payload) => ({
   type: ADD_ITEM,
@@ -22,5 +22,10 @@ export const toggleModal = (payload) => ({
 
 export const addCategory = (payload) => ({
   type: ADD_CATEGORY,
+  payload
+});
+
+export const updateCategory = (payload) => ({
+  type: UDPATE_CATEGORY,
   payload
 });
