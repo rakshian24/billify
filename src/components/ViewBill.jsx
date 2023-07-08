@@ -11,7 +11,7 @@ const ButtonContainer = styled.div`
   text-align: right;
 `;
 
-const ViewBill = ({ cartItems }) => {
+const ViewBill = ({ cartItems, locale }) => {
   const [showPdfView, setShowPdfView] = useState(false);
   return (
     <>
@@ -30,7 +30,7 @@ const ViewBill = ({ cartItems }) => {
       {showPdfView && cartItems.length > 0 && (
         <Container>
           {<PDFViewer width="100%" height="900" >
-            <Bill cartItems={cartItems} />
+            <Bill cartItems={cartItems} locale={locale} />
           </PDFViewer>}
         </Container>
       )}</>
