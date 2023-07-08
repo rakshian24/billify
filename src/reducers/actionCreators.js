@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM, ADD_CATEGORY } from "./actions";
+import { ADD_ITEM, REMOVE_ITEM, ADD_CATEGORY, SET_LOCALE } from "./actions";
 
 export const addItemToCart = (payload) => ({
   type: ADD_ITEM,
@@ -10,7 +10,12 @@ export const removeItemFromCart = (payload) => ({
   payload,
 });
 
+export const setLocale = (payload) => ({
+  type: SET_LOCALE,
+  payload
+});
+
 export const addCategory = (payload) => ({
   type: ADD_CATEGORY,
   payload
-})
+});

@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
   }
 });
 
-const Bill = ({ cartItems }) => {
+const Bill = ({ cartItems, locale }) => {
   return (
-    <I18nProvider locale={'kn'}>
+    <I18nProvider locale={locale}>
       <Document>
         <Page size="A4" style={styles.page}>
           <div style={styles.pageTitleContainer}>

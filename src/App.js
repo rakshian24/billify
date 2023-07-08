@@ -1,17 +1,16 @@
-import { useState } from "react";
 import { styled } from "styled-components";
 import { Routes, Route } from "react-router-dom";
-import { Provider as StoreProvider } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { configureStore } from "./common/store";
-import { rootReducer, initialState } from "./reducers";
+import { getLocale } from "./reducers";
 import I18nProvider from "./i18n/Provider";
 import Header from "./components/Header";
-import { APP_CONTAINER_MAX_WIDTH, APP_NAME } from "./constants";
+import { APP_CONTAINER_MAX_WIDTH } from "./constants";
 import CategoriesPage from "./pages/CategoriesPage";
 import CategoryDetailsPage from "./pages/CategoryDetailsPage";
 import CartPage from "./pages/CartPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import { setLocale } from "./reducers/actionCreators";
 
 const AppWrapper = styled.div`
   height: 100vh;
@@ -34,35 +33,27 @@ const AppContainer = styled.div`
 `;
 
 const App = () => {
-  const [locale, setLocale] = useState();
+  const dispatch = useDispatch();
+  const locale = useSelector(getLocale);
+  
   const handleChangeLanguage = (selectedLanguage) => {
-    setLocale(selectedLanguage);
+    dispatch(setLocale({ locale: selectedLanguage }))
   }
 
-  const store = configureStore({
-    initialState,
-    appName: APP_NAME,
-    rootReducer,
-  });
-
-  console.log("LOCALE = ", locale)
-
   return (
-    <StoreProvider store={store}>
-      <I18nProvider locale={locale}>
-        <AppWrapper>
-          <Header handleChangeLanguage={handleChangeLanguage} />
-          <AppContainer>
-            <Routes>
-              <Route path="/" element={<CategoriesPage />} />
-              <Route path="/categories/:categoryId" element={<CategoryDetailsPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/*" element={<NotFoundPage />} />
-            </Routes>
-          </AppContainer>
-        </AppWrapper>
-      </I18nProvider>
-    </StoreProvider>
+    <I18nProvider locale={locale}>
+      <AppWrapper>
+        <Header handleChangeLanguage={handleChangeLanguage} />
+        <AppContainer>
+          <Routes>
+            <Route path="/" element={<CategoriesPage />} />
+            <Route path="/categories/:categoryId" element={<CategoryDetailsPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/*" element={<NotFoundPage />} />
+          </Routes>
+        </AppContainer>
+      </AppWrapper>
+    </I18nProvider>
   );
 }
 

@@ -13,10 +13,10 @@ const ButtonContainer = styled.div`
   text-align: right;
 `;
 
-const DownloadBill = ({ cartItems }) => {
+const DownloadBill = ({ cartItems, locale }) => {
   return (
     <Container>
-      <PDFDownloadLink document={<Bill cartItems={cartItems} />} fileName={`${DOWNLOADED_BILL_NAME}.pdf`}>
+      <PDFDownloadLink document={<Bill cartItems={cartItems} locale={locale} />} fileName={`${DOWNLOADED_BILL_NAME}.pdf`}>
         {({ loading }) => (loading ? 'Loading document...' : <ButtonContainer>
           <Button
             style={{ fontSize: '20px' }}

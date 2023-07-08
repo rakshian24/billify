@@ -1,5 +1,6 @@
 import { categoryData } from "../catergoryData";
 import { ITEM_SELECT_DROP_DOWN_VALUE_OPTIONS, LOCAL_STORAGE_KEY } from "../constants"
+import { LOCALES } from "../i18n/locales";
 
 export const persistStateToLocalStorage = (state = {}) => {
   if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
@@ -11,7 +12,7 @@ export const persistStateToLocalStorage = (state = {}) => {
 
 export const getStateFromLocalStorage = () => {
   if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
-    return { cart: [], categories: categoryData }
+    return { cart: [], categories: categoryData, locale: LOCALES.ENGLISH }
   } else {
     return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
   }
