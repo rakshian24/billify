@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, CustomDiv, CustomImage, ImageContainer, NameDiv, PageTitle } from '../common/StyledComponents';
 import { FormattedMessage } from 'react-intl';
-import AddCategoryModal from './AddCategoryModal';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../reducers';
+import { toggleModal } from '../reducers/actionCreators';
+import { MODAL_TYPES } from '../constants';
 
 const CategoryBody = styled.div`
   padding: 0em 0.5em;
@@ -34,10 +35,9 @@ const CategoryCard = styled.div`
 `;
 
 const Categories = () => {
-  const [isAddCategoryBtnClicked, setIsAddCategoryBtnClicked] = useState(false);
   const navigate = useNavigate();
   const categoryData = useSelector(getCategories);
-  console.log('categoryData = ', categoryData)
+  const dispatch = useDispatch();
 
   const safeRequireItemImage = (categoryId) => {
     try {
@@ -48,31 +48,28 @@ const Categories = () => {
   }
 
   return (
-    <>
-      <AddCategoryModal open={isAddCategoryBtnClicked} handleClose={() => setIsAddCategoryBtnClicked(false)} />
-      <Container>
-        <PageTitle>
-          <CustomDiv display='flex' alignitems='center' justifycontent='space-between' marginbottom='2'>
-            <FormattedMessage id='all_categories' />
-            <Button onClick={() => setIsAddCategoryBtnClicked(true)}>
-              <FormattedMessage id='add_category' />
-            </Button>
-          </CustomDiv>
-        </PageTitle>
-        <CategoryBody>
-          {categoryData && categoryData.length > 0 && categoryData.map(({ id, name }) => {
-            return (<CategoryCard key={id} onClick={() => navigate(`/categories/${id}`)}>
-              <ImageContainer>
-                <CustomImage src={safeRequireItemImage(id)} />
-              </ImageContainer>
-              <NameDiv>
-                <FormattedMessage id={name} />
-              </NameDiv>
-            </CategoryCard>)
-          })}
-        </CategoryBody>
-      </Container>
-    </>
+    <Container>
+      <PageTitle>
+        <CustomDiv display='flex' alignitems='center' justifycontent='space-between' marginbottom='2'>
+          <FormattedMessage id='all_categories' />
+          <Button onClick={() => dispatch(toggleModal({ type: MODAL_TYPES.CATEGORY, showModal: true }))}>
+            <FormattedMessage id='add_category' />
+          </Button>
+        </CustomDiv>
+      </PageTitle>
+      <CategoryBody>
+        {categoryData && categoryData.length > 0 && categoryData.map(({ id, name }) => {
+          return (<CategoryCard key={id} onClick={() => navigate(`/categories/${id}`)}>
+            <ImageContainer>
+              <CustomImage src={safeRequireItemImage(id)} />
+            </ImageContainer>
+            <NameDiv>
+              <FormattedMessage id={name} />
+            </NameDiv>
+          </CategoryCard>)
+        })}
+      </CategoryBody>
+    </Container>
   )
 }
 

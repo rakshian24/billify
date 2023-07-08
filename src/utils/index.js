@@ -12,7 +12,7 @@ export const persistStateToLocalStorage = (state = {}) => {
 
 export const getStateFromLocalStorage = () => {
   if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
-    return { cart: [], categories: categoryData, locale: LOCALES.ENGLISH }
+    return { cart: [], categories: categoryData, locale: LOCALES.ENGLISH, modal: {} }
   } else {
     return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
   }
