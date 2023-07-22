@@ -4,6 +4,8 @@ export const kan = {
   [LOCALES.KANNADA]: {
     english: 'English',
     kannada: 'ಕನ್ನಡ',
+    hindi: 'हिंदी',
+    choose_language: 'ಭಾಷೆಯನ್ನು ಆರಿಸಿ',
     app_title: 'ಬಿಲ್ಲಿಫೈ',
     all_categories: 'ಎಲ್ಲಾ ವರ್ಗಗಳು',
     add_category: 'ವರ್ಗವನ್ನು ಸೇರಿಸಿ',

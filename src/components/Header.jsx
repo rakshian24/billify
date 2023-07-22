@@ -104,12 +104,15 @@ const Header = ({ handleChangeLanguage }) => {
         size="xs"
       >
         <Drawer.Header>
-          <Drawer.Title style={{ fontSize: '1.5em' }}>Choose Language</Drawer.Title>
+          <Drawer.Title style={{ fontSize: '1.5em' }}>
+            <FormattedMessage id="choose_language" />
+          </Drawer.Title>
         </Drawer.Header>
         <Drawer.Body>
           <List>
             <StyledListItem onClick={() => handleOnLanguageClick(LOCALES.ENGLISH)}><FormattedMessage id="english" /></StyledListItem>
             <StyledListItem onClick={() => handleOnLanguageClick(LOCALES.KANNADA)}><FormattedMessage id="kannada" /></StyledListItem>
+            <StyledListItem onClick={() => handleOnLanguageClick(LOCALES.HINDI)}><FormattedMessage id="hindi" /></StyledListItem>
           </List>
         </Drawer.Body>
       </Drawer>
