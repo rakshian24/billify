@@ -3,7 +3,9 @@ import { LOCALES } from "../locales";
 export const en = {
   [LOCALES.ENGLISH]: {
     english: 'English',
-    kannada: 'Kannada',
+    kannada: 'ಕನ್ನಡ',
+    hindi: 'हिंदी',
+    choose_language: 'Choose Language',
     app_title: 'Billify',
     all_categories: 'All categories',
     add_category: 'Add category',

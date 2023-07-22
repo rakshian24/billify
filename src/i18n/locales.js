@@ -1,4 +1,5 @@
 export const LOCALES = {
   ENGLISH: 'en-in',
-  KANNADA: 'kn'
+  KANNADA: 'kn',
+  HINDI: 'hin'
 }
